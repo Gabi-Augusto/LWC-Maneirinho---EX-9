@@ -1,0 +1,7 @@
+public class TaskContollerC {
+    
+    @AuraEnabled(cacheable=true)
+    public static List<Task> getListTask(){
+        return [Select Id, WhoId, Who.Name, AccountId, Account.Name, Subject, CreatedDate, Status, Priority FROM Task WHERE OwnerId =: UserInfo.getUserId()];
+    }
+}
