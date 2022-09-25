@@ -1,0 +1,14 @@
+Trigger LeadTrigger on Lead (before INSERT, before UPDATE, after INSERT, after UPDATE){
+    
+    if(Trigger.isBefore && Trigger.isInsert){
+        LeadBO.criaTarefa(Trigger.new);
+		        
+    }else if(Trigger.isBefore && Trigger.isUpdate){
+      	LeadBO.criaTarefa(Trigger.new);
+        
+    }else if(Trigger.isAfter && Trigger.isInsert){
+        
+    }else if(Trigger.isAfter && Trigger.isUpdate){
+        
+    }
+}
