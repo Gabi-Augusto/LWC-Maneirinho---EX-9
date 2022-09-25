@@ -1,0 +1,19 @@
+@IsTest
+public class LeadBOTest {
+      
+    @IsTest
+    public static void criarTarefa(){
+
+	Lead newLead   = new Lead(); 
+		newLead.LastName 		  = 'Teste 1 ';
+		newLead.Company                    = 'Mamaco Corp';
+		newLead.AnnualRevenue 	  = 77000;
+		INSERT newLead;
+		UPDATE newLead;
+		list<Lead> lstLead = new List<Lead>();
+		lstLead = [SELECT Id, AnnualRevenue FROM Lead WHERE Id=:newLead.id];
+		list<Task> lstTask = new List<Task>();
+		lstTask = [SELECT Id, WhoId FROM Task WHERE WhoId in: lstLead];
+		System.assert (lstTask != NULL, 'O resultado não é o esperado!');    
+	}
+}
