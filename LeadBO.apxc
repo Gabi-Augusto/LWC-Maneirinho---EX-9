@@ -1,0 +1,17 @@
+public class LeadBO {
+    
+    public static void criaTarefa (List<Lead> lstLead){
+        List<Task> lstTask = new List<Task>();
+        for(Lead Counter: lstLead){
+            task newTask = new Task();
+            newTask.Subject = 'Entrar em contato';
+            newTask.Status = 'Not Started';
+            newTask.Priority = 'Normal';
+            newTask.ActivityDate = system.now().date() + 7;
+            newTask.WhoId = Counter.Id;
+            lstTask.add(newTask); 
+        }
+        if(lstTask != NULL){
+            INSERT lstTask;
+        } 
+    }
