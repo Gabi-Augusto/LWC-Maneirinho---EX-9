@@ -1,7 +1,9 @@
-public class TaskContollerC {
-    
-    @AuraEnabled(cacheable=true)
-    public static List<Task> getListTask(){
-        return [Select Id, WhoId, Who.Name, AccountId, Account.Name, Subject, CreatedDate, ActivityDate, Status, Priority FROM Task WHERE OwnerId =: UserInfo.getUserId()];
+public with sharing class TaskControllerC {
+
+        @AuraEnabled(cacheable=true)
+        public static List<Task> getListTask(){
+            return [Select Id, WhoId, Who.Name, AccountId, Account.Name, Subject, CreatedDate, ActivityDate, Status, Priority FROM Task WHERE OwnerId =: UserInfo.getUserId() Order By createdDate DESC LIMIT 10];
+        }
+        
     }
-}
+    
